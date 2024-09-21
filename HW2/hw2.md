@@ -48,6 +48,32 @@ For homework simulation, use:
 
 ## HW 2-1-1
 ### Initial Guess
+Source Code
+```
+* HW2_1_1.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vd  d   gnd 0.9
+Vg  g   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.18u
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u
+
+*----------------------------------------------------------------------
+* Stimulus
+*----------------------------------------------------------------------
+.op
+.end
+```
+
+Simulation Result
 ```
 ...                       
  element  0:mn1      0:mp1     
@@ -63,6 +89,43 @@ pmos: fine-tune `Lp` up one step (0.01u) every time.
 nmos: change `Ln` to 4.5 times the original (0.81u), then perform fine-tuning.
 
 ### NMOS Tuning
+Source Code
+```
+* HW2_1_1_b.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+*nmos
+Vg  g   gnd 0.9
+Vd  d   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=LN
+*MP1 d g ndd ndd P_18 W=0.25u L=LP
+
+*MN1 d g gnd gnd N_18 W=0.25u L=0.18u
+*MP1 d g ndd ndd P_18 W=0.25u L=0.18u
+
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+
+.dc Vdd 0 1.8 1.8 sweep LN 0.81u 1.0u 0.01u
+*.dc Vg 0 0.9 0.9 sweep LP 0.18u 0.2u 0.01u
+
+.probe i1(MN1)
+*.probe i1(MP1)
+.meas DC IMeas find i1(MN1) when v(g)=0.9
+*.meas DC IMeas find i1(MP1) when v(g)=0.9
+.end
+```
+
 Simulation Result:
 ```
 ...
@@ -81,6 +144,8 @@ Simulation Result:
 when Ln parameter `ln = 0.9u`, id is closest to 10uA (1.0025E-05 A).
 
 ### PMOS Tuning
+Source Code: same as above except tune pmos
+
 Simulation Result:
 ```
 ...
@@ -106,6 +171,15 @@ For pmos we choose Wp = 0.25u, Lp = 0.18u.
 
 ### NMOS
 ```
+* HW2_1_2.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
 Vg  g   gnd 0.9
 Vd  d   gnd 0.9
 Vdd ndd gnd 1.8
@@ -122,6 +196,15 @@ MN1 d g gnd gnd N_18 W=0.25u L=0.9u
 
 ### PMOS
 ```
+* HW2_1_2.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
 Vg  g   gnd 0.9
 Vd  d   gnd 0.9
 Vdd ndd gnd 1.8
