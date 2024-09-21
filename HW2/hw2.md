@@ -8,8 +8,7 @@ NYCU EE 112511210 黃仲璿
 - FS
 - SF
 
-### Available Models
-#### MOS
+### Available MOS Models
 - N_18 (1.8v nmos)
 - N_BPW_18 (1.8v p-well nmos)
 - P_18 (1.8v pmos)
@@ -23,10 +22,6 @@ NYCU EE 112511210 黃仲璿
 - N_ZERO_18 (zero Vt 1.8v nmos)
 - N_ZERO_33
 
-#### BJT
-#### Diode
-#### Capacitor
-
 ### Design Rule
 ```
 ****Layout-Dependent Parasitics Model Parameters****
@@ -38,16 +33,12 @@ NYCU EE 112511210 黃仲璿
 For homework simulation, use:
 - `TT` type
 - `N_18` and `P_18` for 1.8V nmos and pmos
-- `LMIN = 0.18u` and `WMIN = 2.5u`
-- assume minimal channel length/width delta = 0.01u (????)
+- `LMIN = 0.18u` and `WMIN = 0.25u`
+- assume minimal channel length/width delta = 0.01u
 - assume temperature = 27 C
 
-### Spice Tutorial
-#### MOS
-`M<name> <drain> <gate> <source> <body> <model> W=<width> L=<length>`
 
-
-## HW 2-1-1
+## Problem 2-1-1
 ### Initial Guess
 Source Code
 ```
@@ -170,7 +161,7 @@ when Lp parameter `lp = 0.18u`, id is closest to 10uA (-1.0570E-05 A)
 
 -----
 
-## HW 2-1-2
+## Problem 2-1-2
 ### NMOS
 ```
 * HW2_1_2.sp
@@ -224,7 +215,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u
 
 -----
 
-## HW 2-2-1
+## Problem 2-2-1
 Parallel connecting M nmoses is the equivalent of multiplying Ln by M, thus multiplying Io. The same idea applies to pmos. Therefore, to have Io = 10uA, 20uA, 30uA, we use:
 ```
 *Io = 10u
@@ -286,10 +277,10 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
 
 -----
 
-## HW 2-2-2
+## Problem 2-2-2
 ### V1 = 0.7V
 #### Initial Guess
-Source Code: same as HW 2-1-1 except set all `Vg` to 0.7
+Source Code: same as Problem 2-1-1 except set all `Vg` to 0.7
 
 Simulation Result:
 ```
@@ -365,7 +356,7 @@ MP1 d g ndd ndd P_18 W=0.26u L=0.18u
 
 ### Vg = 0.8
 #### Initial Guess
-Source Code: same as HW 2-1-1 except set all `Vg` to 0.8
+Source Code: same as Problem 2-1-1 except set all `Vg` to 0.8
 
 Simulation Result:
 ```                    
@@ -464,7 +455,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
 
 ### Vg = 1.0
 #### Initial Guess
-Source Code: same as HW 2-1-1 except set all `Vg` to 1.0
+Source Code: same as Problem 2-1-1 except set all `Vg` to 1.0
 
 Simulation Result:
 ```                    
@@ -534,7 +525,7 @@ MP1 d g ndd ndd P_18 W=0.80u L=0.18u
 
 ### Vg = 1.1
 #### Initial Guess
-Source Code: same as HW 2-1-1 except set all `Vg` to 1.1
+Source Code: same as Problem 2-1-1 except set all `Vg` to 1.1
 
 Simulation Result:
 ```                    
