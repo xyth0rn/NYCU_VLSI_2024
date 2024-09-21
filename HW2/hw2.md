@@ -1,26 +1,27 @@
 # Homework 2
 ## Introduction to Library: CIC 0.18um 1.8V/3.3V 1P6M virtual Mixed Mode/RFCMOS Process
 ### Availabe corners: (pmos-nmos)
-TT (typical typical)
-FF (fast fast)
-SS (slow slow)
-FS
-SF
+- TT (typical typical)
+- FF (fast fast)
+- SS (slow slow)
+- FS
+- SF
 
-### Available models
+### Available Models
 #### MOS
-N_18 (1.8v nmos)
-N_BPW_18 (1.8v p-well nmos)
-P_18 (1.8v pmos)
-N_33 (3.3v nmos)
-N_BPW_33
-P_33
-N_LV_18 (low threshold voltage 1.8v nmos)
-P_LV_18
-N_LV_33
-P_LV_33
-N_ZERO_18 (zero Vt 1.8v nmos)
-N_ZERO_33
+- N_18 (1.8v nmos)
+- N_BPW_18 (1.8v p-well nmos)
+- P_18 (1.8v pmos)
+- N_33 (3.3v nmos)
+- N_BPW_33
+- P_33
+- N_LV_18 (low threshold voltage 1.8v nmos)
+- P_LV_18
+- N_LV_33
+- P_LV_33
+- N_ZERO_18 (zero Vt 1.8v nmos)
+- N_ZERO_33
+
 #### BJT
 #### Diode
 #### Capacitor
@@ -109,7 +110,7 @@ Vg  g   gnd 0.9
 Vd  d   gnd 0.9
 Vdd ndd gnd 1.8
 
-MN1 d g gnd gnd N_18 W=0.25u L=0.81u
+MN1 d g gnd gnd N_18 W=0.25u L=0.9u
 
 *----------------------------------------------------------------------
 * Stimulus
@@ -118,7 +119,6 @@ MN1 d g gnd gnd N_18 W=0.25u L=0.81u
 .probe i1(MN1)
 ```
 ![image](https://github.com/user-attachments/assets/b2d96cea-ad2f-4a3e-8fa8-6873ab2d3a43)
-
 
 ### PMOS
 ```
@@ -136,3 +136,68 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u
 ```
 ![image](https://github.com/user-attachments/assets/a4cb456c-6f6b-4848-887c-8df78f03649f)
 
+## HW 2-2-1
+Parallel connecting M nmoses is the equivalent of multiplying Ln by M, thus multiplying Io. The same idea applies to pmos. Therefore, to have Io = 10uA, 20uA, 30uA, we use:
+```
+*Io = 10u
+MN1 d g gnd gnd N_18 W=0.25u L= 0.9u M=1
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=1
+
+*Io = 20u
+MN1 d g gnd gnd N_18 W=0.25u L= 0.9u M=2
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
+
+*Io = 30u
+MN1 d g gnd gnd N_18 W=0.25u L= 0.9u M=3
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
+```
+
+### Io = 10uA (M = 1)
+```
+* HW2_2_1.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=1
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=1
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+.dc Vg 0 1.8 0.01
+.probe i1(MN1)
+.end
+```
+![image](https://github.com/user-attachments/assets/ba1661d1-1f25-431d-832c-57843e751b75)
+
+
+### Io = 20uA (M = 2)
+Code same as above, except
+```
+MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=2
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
+```
+![image](https://github.com/user-attachments/assets/6a19897e-6300-43a6-b078-0f1a5e16fbd6)
+
+
+### Io = 30uA (M = 3)
+Code same as above, except
+```
+MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=3
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
+```
+![image](https://github.com/user-attachments/assets/e236e886-4136-4670-a61f-d27cdf972a8b)
+
+
+### Discussion
+output current changes but Vo-Vi curve remains the same, why?
+
+## HW 2-2-2
