@@ -117,7 +117,8 @@ MN1 d g gnd gnd N_18 W=0.25u L=0.81u
 .dc Vd 0 1.8 0.01 sweep Vg 0.7 1.0 0.1
 .probe i1(MN1)
 ```
-![image](https://github.com/user-attachments/assets/f84fa567-55be-476f-bb63-73a9f9494b54)
+![image](https://github.com/user-attachments/assets/b2d96cea-ad2f-4a3e-8fa8-6873ab2d3a43)
+
 
 ### PMOS
 ```
@@ -133,4 +134,5 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u
 .dc Vd 0 1.8 0.01 sweep Vg 0.7 1.0 0.1
 .probe i1(MP1)
 ```
-![image](https://github.com/user-attachments/assets/cd7041eb-63f8-43f1-b261-a70c0d659b99)
+![image](https://github.com/user-attachments/assets/a4cb456c-6f6b-4848-887c-8df78f03649f)
+
