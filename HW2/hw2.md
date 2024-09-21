@@ -38,3 +38,4 @@ For homework simulation, use:
 - `N_18` and `P_18` for 1.8V nmos and pmos
 - `LMIN = 0.18u` and `WMIN = 2.5u`
 - assume minimal channel length/width delta = 0.01u (????)
+- assume temperature = 27 C
