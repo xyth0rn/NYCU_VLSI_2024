@@ -39,3 +39,7 @@ For homework simulation, use:
 - `LMIN = 0.18u` and `WMIN = 2.5u`
 - assume minimal channel length/width delta = 0.01u (????)
 - assume temperature = 27 C
+
+### Spice Tutorial
+#### MOS
+`M<name> <drain> <gate> <source> <body> <model> W=<width> L=<length>`
