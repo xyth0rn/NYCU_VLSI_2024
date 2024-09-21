@@ -43,3 +43,20 @@ For homework simulation, use:
 ### Spice Tutorial
 #### MOS
 `M<name> <drain> <gate> <source> <body> <model> W=<width> L=<length>`
+
+
+## Homework 2-1-1
+### Simulation Result
+```
+...                       
+ element  0:mn1      0:mp1     
+ model    0:n_18.1   0:p_18.1  
+ region     Saturati   Saturati
+  id        45.7379u  -10.5697u
+...
+```
+We see that `id` of nmos is 4.5 times larger than target (10u), and `id` of pmos is very close to target (10u).
+Note: ![image](https://github.com/user-attachments/assets/2f2d32a4-f20d-470f-8f64-441c11031715)
+
+pmos: fine-tune `Lp` up one step (0.01u) every time.
+nmos: change `Ln` to 4.5 times the original (0.81u), then perform fine-tuning.
