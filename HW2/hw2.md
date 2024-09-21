@@ -339,7 +339,7 @@ when Wp parameter `wp = 0.26u`, id is closest to 20uA (-19.9722u A)
 
 #### Result
 ```
-* HW2_2_2_07.sp
+* HW2_2_2_07_dc.sp
 *----------------------------------------------------------------------
 .lib 'cic018.l'  tt
 .temp 27
@@ -407,7 +407,7 @@ when Wp parameter `wp = 0.33u`, id is closest to 20uA (-19.9570u A)
 
 #### Result
 ```
-* HW2_2_2_07.sp
+* HW2_2_2_08_dc.sp
 *----------------------------------------------------------------------
 .lib 'cic018.l'  tt
 .temp 27
@@ -432,3 +432,98 @@ MP1 d g ndd ndd P_18 W=0.33u L=0.18u
 .end
 ```
 ![image](https://github.com/user-attachments/assets/02d08407-2c44-49cd-b07d-afecb6069ac6)
+
+### Vg = 0.9
+Same as Problem 2-2-1
+```
+* HW2_2_1.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=2
+MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+.dc Vg 0 1.8 0.01
+.probe i1(MN1)
+.end
+```
+![image](https://github.com/user-attachments/assets/6a19897e-6300-43a6-b078-0f1a5e16fbd6)
+
+### Vg = 1.0
+#### Initial Guess
+Source Code: same as HW 2-1-1 except set all `Vg` to 1.0
+
+Simulation Result:
+```                    
+ element  0:mn1      0:mp1     
+ model    0:n_18.1   0:p_18.1  
+ region     Saturati   Saturati
+  id        60.0367u   -6.8436u
+```
+We see that `id` of both nmos is roughly 3 times larger than the target (20uA), and pmos is roughly third of such.
+
+- pmos: to increase current, multiply `Wp` by 2 (0.50u), fine-tune `Wp` up one step (0.01u) every time.
+- nmos: to decrease current, multiply `Ln` by 3 (0.75u), then fine-tune `Ln` up one step (0.01u) every time.
+
+#### NMOS
+```
+ * hw2_2_2_10.sp
+ *** parameter ln =  570.0000n       ***    
+    1.80000         20.2303u       
+ ******  
+ * hw2_2_2_10.sp
+   *** parameter ln =  580.0000n       ***
+    1.80000         19.9363u
+```
+when Ln parameter `ln = 0.58u`, id is closest to 20uA (19.9363u A)
+
+#### PMOS
+```
+ * hw2_2_2_10.sp
+   *** parameter wp =  790.0000n       ***     
+    1.80000        -19.8113u       
+ ******  
+ * hw2_2_2_10.sp
+   *** parameter wp =  800.0000n       ***      
+    1.80000        -20.0495u 
+```
+when Wp parameter `wp = 0.80u`, id is closest to 20uA (-20.0495u A)
+
+#### Result
+```
+* HW2_2_2_10_dc.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+*Vd  d   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.58u
+MP1 d g ndd ndd P_18 W=0.80u L=0.18u
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+
+.dc Vg 0 1.8 0.01
+.op
+.end
+```
+![image](https://github.com/user-attachments/assets/aeb3b077-62c4-48ac-b9df-d7facd33142d)
