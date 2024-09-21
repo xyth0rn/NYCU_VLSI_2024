@@ -46,7 +46,7 @@ For homework simulation, use:
 
 
 ## Homework 2-1-1
-### Simulation Result
+### Initial Guess
 ```
 ...                       
  element  0:mn1      0:mp1     
@@ -60,3 +60,43 @@ Note: ![image](https://github.com/user-attachments/assets/2f2d32a4-f20d-470f-8f6
 
 pmos: fine-tune `Lp` up one step (0.01u) every time.
 nmos: change `Ln` to 4.5 times the original (0.81u), then perform fine-tuning.
+
+### NMOS Tuning
+Simulation Result:
+```
+...
+ ******  
+ * hw2_1_1_b.sp
+   *** parameter ln =  900.0000n       ***
+   imeas=  1.0025E-05
+ ******
+
+ * hw2_1_1_b.sp
+   *** parameter ln =  910.0000n       ***
+   imeas=  9.9322E-06
+ ******
+...
+```
+when Ln parameter `ln = 0.9u`, id is closest to 10uA (1.0025E-05 A).
+
+### PMOS Tuning
+Simulation Result:
+```
+...
+******  
+ * hw2_1_1_b.sp
+   *** parameter lp =  180.0000n       ***
+   imeas= -1.0570E-05
+ ******
+
+ * hw2_1_1_b.sp
+  *** parameter lp =  190.0000n       ***
+   imeas= -9.2225E-06
+ ******
+...
+```
+when Lp parameter `lp = 0.18u`, id is closest to 10uA (-1.0570E-05 A)
+
+### Answer
+For nmos we choose Wn = 0.25u, Ln = 0.9u.
+For pmos we choose Wp = 0.25u, Lp = 0.18u. 
