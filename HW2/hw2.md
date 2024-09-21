@@ -281,6 +281,149 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
 
 
 ### Discussion
-output current changes but Vo-Vi curve remains the same, why?
+output current changes but Vo-Vi curve remains the same, why??????????????????????????????????????????????????????????????????
+
+
 
 ## HW 2-2-2
+### V1 = 0.7V
+#### Initial Guess
+Source Code: same as HW 2-1-1 except set all `Vg` to 0.7
+
+Simulation Result:
+```
+element  0:mn1      0:mp1     
+ model    0:n_18.1   0:p_18.1  
+ region     Saturati   Saturati
+  id        21.5095u  -18.9496u
+```
+We see that `id` of both nmos and pmos are very close to target (20u).
+
+- pmos: to increase current, fine-tune `Wp` up one step (0.01u) every time.
+- nmos: to decrease current, fine-tune `Ln` up one step (0.01u) every time.
+
+#### NMOS
+Simulation Result:
+```
+...
+ * hw2_2_2_07.sp
+   *** parameter ln =  180.0000n       ***
+   imeas=  2.1509E-05
+ ******  
+ * hw2_2_2_07.sp
+   *** parameter ln =  190.0000n       ***
+   imeas=  1.9373E-05
+...
+```
+when Ln parameter `ln = 0.19u`, id is closest to 20uA (1.9373E-05 A)
+
+#### PMOS
+Simulation Result:
+```
+...
+ * hw2_2_2_07.sp
+   *** parameter wp =  260.0000n       ***    
+    1.80000        -19.9722u
+******  
+ * hw2_2_2_07.sp
+   *** parameter wp =  270.0000n       ***    
+    1.80000        -20.9425u
+...
+```
+when Wp parameter `wp = 0.26u`, id is closest to 20uA (-19.9722u A)
+
+#### Result
+```
+* HW2_2_2_07.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+*Vd  d   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.19u
+MP1 d g ndd ndd P_18 W=0.26u L=0.18u
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+
+.dc Vg 0 1.8 0.01
+.op
+.end
+```
+![image](https://github.com/user-attachments/assets/ec227e9e-8c4e-45d8-996a-e04b7c1a9340)
+
+### Vg = 0.8
+#### Initial Guess
+Source Code: same as HW 2-1-1 except set all `Vg` to 0.8
+
+Simulation Result:
+```                    
+ element  0:mn1      0:mp1     
+ model    0:n_18.1   0:p_18.1  
+ region     Saturati   Saturati
+  id        33.1641u  -14.5751u
+```
+We see that `id` of both nmos and pmos are very close to target (20u).
+
+- pmos: to increase current, fine-tune `Wp` up one step (0.01u) every time.
+- nmos: to decrease current, multiply `Ln` by 1.2 (0.22u), then fine-tune `Ln` up one step (0.01u) every time.
+
+#### NMOS
+```
+ * hw2_2_2_08.sp
+   *** parameter ln =  260.0000n       ***
+   imeas=  2.0368E-05
+ ******  
+ * hw2_2_2_08.sp
+   *** parameter ln =  270.0000n       ***
+   imeas=  1.9564E-05
+```
+when Ln parameter `ln = 0.29u`, id is closest to 20uA (2.0368E-05 A)
+
+#### PMOS
+```
+ * hw2_2_2_08.sp
+   *** parameter wp =  330.0000n       ***    
+    1.80000        -19.9570u       
+ ******  
+ * hw2_2_2_08.sp
+   *** parameter wp =  340.0000n       ***
+    1.80000        -20.5651u   
+```
+when Wp parameter `wp = 0.33u`, id is closest to 20uA (-19.9570u A)
+
+#### Result
+```
+* HW2_2_2_07.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+*Vd  d   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.29u
+MP1 d g ndd ndd P_18 W=0.33u L=0.18u
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+
+.dc Vg 0 1.8 0.01
+.op
+.end
+```
+![image](https://github.com/user-attachments/assets/02d08407-2c44-49cd-b07d-afecb6069ac6)
