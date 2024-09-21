@@ -167,6 +167,8 @@ when Lp parameter `lp = 0.18u`, id is closest to 10uA (-1.0570E-05 A)
 For nmos we choose Wn = 0.25u, Ln = 0.9u.
 For pmos we choose Wp = 0.25u, Lp = 0.18u. 
 
+-----
+
 ## HW 2-1-2
 
 ### NMOS
@@ -218,6 +220,9 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u
 .probe i1(MP1)
 ```
 ![image](https://github.com/user-attachments/assets/a4cb456c-6f6b-4848-887c-8df78f03649f)
+
+
+-----
 
 ## HW 2-2-1
 Parallel connecting M nmoses is the equivalent of multiplying Ln by M, thus multiplying Io. The same idea applies to pmos. Therefore, to have Io = 10uA, 20uA, 30uA, we use:
@@ -283,7 +288,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
 ### Discussion
 output current changes but Vo-Vi curve remains the same, why??????????????????????????????????????????????????????????????????
 
-
+-----
 
 ## HW 2-2-2
 ### V1 = 0.7V
