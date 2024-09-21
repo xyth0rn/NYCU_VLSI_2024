@@ -1,4 +1,5 @@
 # Homework 2
+NYCU EE 112511210 黃仲璿
 ## Introduction to Library: CIC 0.18um 1.8V/3.3V 1P6M virtual Mixed Mode/RFCMOS Process
 ### Availabe corners: (pmos-nmos)
 - TT (typical typical)
@@ -163,14 +164,13 @@ Simulation Result:
 ```
 when Lp parameter `lp = 0.18u`, id is closest to 10uA (-1.0570E-05 A)
 
-### Answer
+### Result
 <mark>For nmos we choose Wn = 0.25u, Ln = 0.9u. <br></mark>
 <mark>For pmos we choose Wp = 0.25u, Lp = 0.18u.</mark>
 
 -----
 
 ## HW 2-1-2
-
 ### NMOS
 ```
 * HW2_1_2.sp
