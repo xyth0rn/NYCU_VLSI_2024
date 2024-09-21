@@ -471,7 +471,7 @@ Simulation Result:
  region     Saturati   Saturati
   id        60.0367u   -6.8436u
 ```
-We see that `id` of both nmos is roughly 3 times larger than the target (20uA), and pmos is roughly third of such.
+We see that `id` of nmos is roughly 3 times larger than the target (20uA), and pmos is roughly third of such.
 
 - pmos: to increase current, multiply `Wp` by 2 (0.50u), fine-tune `Wp` up one step (0.01u) every time.
 - nmos: to decrease current, multiply `Ln` by 3 (0.75u), then fine-tune `Ln` up one step (0.01u) every time.
@@ -527,3 +527,71 @@ MP1 d g ndd ndd P_18 W=0.80u L=0.18u
 .end
 ```
 ![image](https://github.com/user-attachments/assets/aeb3b077-62c4-48ac-b9df-d7facd33142d)
+
+### Vg = 1.1
+#### Initial Guess
+Source Code: same as HW 2-1-1 except set all `Vg` to 1.1
+
+Simulation Result:
+```                    
+ element  0:mn1      0:mp1     
+ model    0:n_18.1   0:p_18.1  
+ region     Saturati   Saturati
+  id        73.6641u   -3.8705u
+```
+We see that `id` of nmos is roughly 3.5 times larger than the target (20uA), and pmos is roughly sixth of such.
+
+- pmos: to increase current, multiply `Wp` by 5 (1.25), fine-tune `Wp` up one step (0.01u) every time.
+- nmos: to decrease current, multiply `Ln` by 6 (0.84u), then fine-tune `Ln` up one step (0.01u) every time.
+
+#### NMOS
+```
+ * hw2_2_2_11.sp
+   *** parameter ln =  790.0000n       ***    
+    1.80000         20.0234u       
+ ******  
+ * hw2_2_2_11.sp
+   *** parameter ln =  800.0000n       ***     
+    1.80000         19.8142u 
+```
+when Ln parameter `ln = 0.79u`, id is closest to 20uA (20.0234u A)
+
+#### PMOS
+```
+ * hw2_2_2_11.sp
+   *** parameter wp =    1.6100u       ***
+    1.80000        -19.9563u       
+ ******  
+ * hw2_2_2_11.sp
+   *** parameter wp =    1.6200u       ***    
+    1.80000        -20.0835u  
+```
+when Wp parameter `wp = 1.61u`, id is closest to 20uA (-19.9563u A)
+
+#### Result
+```
+* HW2_2_2_11_dc.sp
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+.option post
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+Vg  g   gnd
+*Vd  d   gnd 0.9
+Vdd ndd gnd 1.8
+
+MN1 d g gnd gnd N_18 W=0.25u L=0.79u
+MP1 d g ndd ndd P_18 W=1.61u L=0.18u
+
+*----------------------------------------------------------------------
+* Stimulus
+*---------------------------------------------------------------------- 
+
+.dc Vg 0 1.8 0.01
+.op
+.end
+```
+![image](https://github.com/user-attachments/assets/42a700e0-582b-49c4-8ab9-3659e3fe1a94)
