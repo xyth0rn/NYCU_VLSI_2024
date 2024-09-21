@@ -164,8 +164,8 @@ Simulation Result:
 when Lp parameter `lp = 0.18u`, id is closest to 10uA (-1.0570E-05 A)
 
 ### Answer
-For nmos we choose Wn = 0.25u, Ln = 0.9u.
-For pmos we choose Wp = 0.25u, Lp = 0.18u. 
+<mark>For nmos we choose Wn = 0.25u, Ln = 0.9u. <br></mark>
+<mark>For pmos we choose Wp = 0.25u, Lp = 0.18u.</mark>
 
 -----
 
@@ -284,10 +284,6 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
 ```
 ![image](https://github.com/user-attachments/assets/e236e886-4136-4670-a61f-d27cdf972a8b)
 
-
-### Discussion
-output current changes but Vo-Vi curve remains the same, why??????????????????????????????????????????????????????????????????
-
 -----
 
 ## HW 2-2-2
@@ -338,6 +334,8 @@ Simulation Result:
 when Wp parameter `wp = 0.26u`, id is closest to 20uA (-19.9722u A)
 
 #### Result
+<mark>nmos W = 0.25u L = 0.19u</br></mark>
+<mark>pmos W = 0.26u L = 0.18u</mark>
 ```
 * HW2_2_2_07_dc.sp
 *----------------------------------------------------------------------
@@ -406,6 +404,8 @@ when Ln parameter `ln = 0.29u`, id is closest to 20uA (2.0368E-05 A)
 when Wp parameter `wp = 0.33u`, id is closest to 20uA (-19.9570u A)
 
 #### Result
+<mark>nmos W = 0.25u L = 0.29u</br></mark>
+<mark>pmos W = 0.33u L = 0.18u</mark>
 ```
 * HW2_2_2_08_dc.sp
 *----------------------------------------------------------------------
@@ -435,6 +435,8 @@ MP1 d g ndd ndd P_18 W=0.33u L=0.18u
 
 ### Vg = 0.9
 Same as Problem 2-2-1
+<mark>nmos W = 0.25u L = 0.90u M = 2</br></mark>
+<mark>pmos W = 0.25u L = 0.18u M = 2</mark>
 ```
 * HW2_2_1.sp
 *----------------------------------------------------------------------
@@ -501,6 +503,8 @@ when Ln parameter `ln = 0.58u`, id is closest to 20uA (19.9363u A)
 when Wp parameter `wp = 0.80u`, id is closest to 20uA (-20.0495u A)
 
 #### Result
+<mark>nmos W = 0.25u L = 0.58u</br></mark>
+<mark>pmos W = 0.80u L = 0.18u</mark>
 ```
 * HW2_2_2_10_dc.sp
 *----------------------------------------------------------------------
@@ -569,6 +573,8 @@ when Ln parameter `ln = 0.79u`, id is closest to 20uA (20.0234u A)
 when Wp parameter `wp = 1.61u`, id is closest to 20uA (-19.9563u A)
 
 #### Result
+<mark>nmos W = 0.25u L = 0.79u</br></mark>
+<mark>pmos W = 1.61u L = 0.18u</mark>
 ```
 * HW2_2_2_11_dc.sp
 *----------------------------------------------------------------------
