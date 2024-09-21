@@ -75,7 +75,8 @@ Simulation Result
 ...
 ```
 We see that `id` of nmos is 4.5 times larger than target (10u), and `id` of pmos is very close to target (10u).
-Note: ![image](https://github.com/user-attachments/assets/2f2d32a4-f20d-470f-8f64-441c11031715)
+Note:
+![image](./pic12.png)
 
 pmos: fine-tune `Lp` up one step (0.01u) every time.
 nmos: change `Ln` to 4.5 times the original (0.81u), then perform fine-tuning.
@@ -185,7 +186,7 @@ MN1 d g gnd gnd N_18 W=0.25u L=0.9u
 .dc Vd 0 1.8 0.01 sweep Vg 0.7 1.0 0.1
 .probe i1(MN1)
 ```
-![image](https://github.com/user-attachments/assets/b2d96cea-ad2f-4a3e-8fa8-6873ab2d3a43)
+![image](./pic1.png)
 
 ### PMOS
 ```
@@ -210,7 +211,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u
 .dc Vd 0 1.8 0.01 sweep Vg 0.7 1.0 0.1
 .probe i1(MP1)
 ```
-![image](https://github.com/user-attachments/assets/a4cb456c-6f6b-4848-887c-8df78f03649f)
+![image](./pic2.png)
 
 
 -----
@@ -255,7 +256,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=1
 .probe i1(MN1)
 .end
 ```
-![image](https://github.com/user-attachments/assets/ba1661d1-1f25-431d-832c-57843e751b75)
+![image](./pic3.png)
 
 
 ### Io = 20uA (M = 2)
@@ -264,7 +265,7 @@ Code same as above, except
 MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=2
 MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
 ```
-![image](https://github.com/user-attachments/assets/6a19897e-6300-43a6-b078-0f1a5e16fbd6)
+![image](./pic4.png)
 
 
 ### Io = 30uA (M = 3)
@@ -273,7 +274,7 @@ Code same as above, except
 MN1 d g gnd gnd N_18 W=0.25u L=0.90u M=3
 MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=3
 ```
-![image](https://github.com/user-attachments/assets/e236e886-4136-4670-a61f-d27cdf972a8b)
+![image](./pic5.png)
 
 -----
 
@@ -352,7 +353,7 @@ MP1 d g ndd ndd P_18 W=0.26u L=0.18u
 .op
 .end
 ```
-![image](https://github.com/user-attachments/assets/ec227e9e-8c4e-45d8-996a-e04b7c1a9340)
+![image](./pic6.png)
 
 ### Vg = 0.8
 #### Initial Guess
@@ -422,7 +423,7 @@ MP1 d g ndd ndd P_18 W=0.33u L=0.18u
 .op
 .end
 ```
-![image](https://github.com/user-attachments/assets/02d08407-2c44-49cd-b07d-afecb6069ac6)
+![image./pic7.png)
 
 ### Vg = 0.9
 Same as Problem 2-2-1
@@ -451,7 +452,7 @@ MP1 d g ndd ndd P_18 W=0.25u L=0.18u M=2
 .probe i1(MN1)
 .end
 ```
-![image](https://github.com/user-attachments/assets/6a19897e-6300-43a6-b078-0f1a5e16fbd6)
+![image](./pic8.png)
 
 ### Vg = 1.0
 #### Initial Guess
@@ -521,7 +522,7 @@ MP1 d g ndd ndd P_18 W=0.80u L=0.18u
 .op
 .end
 ```
-![image](https://github.com/user-attachments/assets/aeb3b077-62c4-48ac-b9df-d7facd33142d)
+![image](./pic9.png)
 
 ### Vg = 1.1
 #### Initial Guess
@@ -591,4 +592,4 @@ MP1 d g ndd ndd P_18 W=1.61u L=0.18u
 .op
 .end
 ```
-![image](https://github.com/user-attachments/assets/42a700e0-582b-49c4-8ab9-3659e3fe1a94)
+![image](./pic10.png)
