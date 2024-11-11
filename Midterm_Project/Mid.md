@@ -1,6 +1,8 @@
 # Midterm Project
 ## 1 Register Design Using CMOS Positive Trigger D Latch
-### 1.1 Positive Trigger D Latch
+### 1.1 Register Using Positive Trigger D Latch Testbench Result
+25MHz Input Sequence: 1,1,0,1,0,0,1,0,1,1,1,0,0,1,0 <br>
+Data rate: 25Mbps
 ```
 * HW4_3_1.sp
 *----------------------------------------------------------------------
@@ -54,9 +56,8 @@ Vd  d   gnd PWL(0ns 		1.8v 	40ns 	1.8v	40.1ns 	1.8v 	80ns 	1.8v	80.1ns 	0v 	 	12
 ```
 ![image](https://github.com/user-attachments/assets/63a71403-c520-4cd4-b7cb-823e3babecee)
 
-## 1.2 Register Testbench Result
-25MHz Input Sequence: 1,1,0,1,0,0,1,0,1,1,1,0,0,1,0 <br>
-Data rate: 25Mbps
+## 1.2 Additional Testbench: Non-synchronized Input and Clock Signal
+Here we test a case where the input signal is not in sync with the clock signal to verify the latch function.  
 ```
 * HW4_3_1_2.sp
 *----------------------------------------------------------------------
@@ -108,7 +109,8 @@ Vd  d   gnd PWL(0ns 	0v 		5ns 	0v	5.1ns 	1.8v 	15ns 	1.8v	15.1ns 	0v 	 	25ns 	0v
 .print tran v(d) v(q) v(clk) v(x1.clkb) v(x1.qb) v(x1.qbb)
 .end
 ```
-![image](https://github.com/user-attachments/assets/9cb29c69-1581-481b-8d1e-44d97c174fbf)
+![HW4_3_1_2](https://github.com/user-attachments/assets/e27dfb29-9746-4890-a52c-37ebc6411cc5)
+
 
 ## 2 Two Input Decoder
 Here we attempt to design a two input decoder using footed and unfooted dynamic gates (referencing figures 9.22 ~ 9.25 from the textbook). By comparing the following results, we can conclude that the 3-stage decoder designs have better performance.   
@@ -218,7 +220,8 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 * HW4_3_2_2_UDAND.png
 * HW4_3_3_2_DECODER2.png
 ```
-![image](https://github.com/user-attachments/assets/4dbbe8df-0863-489e-bd5c-9e0ac3bee66a)
+![HW4_3_2_2_mark](https://github.com/user-attachments/assets/36edfe86-ace6-407f-8624-d878ae66ec86)
+
 
 
 ### 2-2 3-stage Unfooted Domino NOR Decoder 4x4x4=64
@@ -295,7 +298,8 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 .print tran v(a) v(e) v(clk) v(a_e) v(a_eb) v(ab_e) v(ab_eb)
 .end
 ```
-![HW4_3_2_3_staticINV_mark](https://github.com/user-attachments/assets/f5dc0514-19f6-4db0-a4ac-907bb1b4293f)
+![HW4_3_2_3_staticINV_mark](https://github.com/user-attachments/assets/bdb785e4-42c1-4bc3-bc6c-00ba2c818a6e)
+
 
 
 
@@ -382,7 +386,8 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 * HW4_3_3_2_FDAND.png
 * HW4_3_3_2_DECODER2.png
 ```
-![image](https://github.com/user-attachments/assets/b4de33c0-8065-42da-88ca-f94b67d4106f)
+![HW4_3_3_2_mark](https://github.com/user-attachments/assets/8aea0673-7d62-4a2a-a9d5-36b137dfd197)
+
 
 
 ### 2-4 3-stage Footed Domino NOR Decoder 4x4x4=64
@@ -460,5 +465,6 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 .print tran v(a) v(e) v(clk) v(a_e) v(a_eb) v(ab_e) v(ab_eb)
 .end
 ```
-![HW4_3_3_3_staticINV_mark](https://github.com/user-attachments/assets/c9c43a70-2be9-4c68-965a-133406461cc4)
+![HW4_3_3_3_staticINV_mark](https://github.com/user-attachments/assets/90a5f0a3-ff1b-4842-be26-544199b10cdb)
+
 
