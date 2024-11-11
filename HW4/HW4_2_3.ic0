@@ -1,0 +1,19 @@
+* "simulator" "HSPICE" 
+* "version" "D-2010.03-SP2 32-BIT"
+* "format" "HSP"
+* "rundate" "00:07:28 11/10/2024 "
+* "netlist" "C:\Users\huai2\Desktop\VLSI\spice_sim_hw4\HW4_2_3.sp "
+* "runtitle" "* hw4_2_3.sp"
+* time =    0.            
+* temperature =   27.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ in =   0.            
++ nd =   1.8000        
++ ndd =   1.8000        
++ o1 =   1.8000        
++ o2 =  34.3546n       
++ o3 =   1.8000        
+***   END: Saved Operating Point ***                     

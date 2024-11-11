@@ -1,0 +1,4 @@
+$DATA1 SOURCE='HSPICE' VERSION='D-2010.03-SP2 32-BIT'
+.TITLE '* hw4_1_1_2_dc.sp'
+ cg               temper           alter#            
+  2.634e-15         27.0000        1                 

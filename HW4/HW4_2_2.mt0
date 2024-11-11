@@ -1,0 +1,6 @@
+$DATA1 SOURCE='HSPICE' VERSION='D-2010.03-SP2 32-BIT'
+.TITLE '* hw4_2_2.sp'
+ trise            tfall            tdelay           temper            
+ alter#            
+  4.847e-10        5.533e-10        5.142e-10         27.0000         
+ 1                 

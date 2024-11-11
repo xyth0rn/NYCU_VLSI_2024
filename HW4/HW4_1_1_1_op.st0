@@ -1,0 +1,26 @@
+***** HSPICE -- D-2010.03-SP2 32-BIT (Aug 26 2010) winnt ******
+ Input File: C:\Users\huai2\Desktop\VLSI\spice_sim_hw4\HW4_1_1_1_op.sp
+ lic:
+ lic: FLEXlm: v10.8
+ lic: USER:   huai2                HOSTNAME: DESKTOP-MSI
+ lic: HOSTID: "00d86111feb0 38baf8e06f3b 00155d5c235f 38baf8e06f37 38baf8e06f38
+ lic: Using FLEXlm license file:
+ lic: 27000@localhost
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 31-dec-2028/2008.120
+ lic: 1(in_use)/999(total) FLOATING license(s) on SERVER localhost
+ lic:
+ init: begin read circuit files,  cpu clock=  6.00E-02
+       option post
+       option captab   =     1.00
+ init: end read circuit files,  cpu clock=  6.60E-02 memory=    151 kb
+ init: begin check errors,  cpu clock=  6.60E-02
+ init: end check errors,  cpu clock=  7.20E-02 memory=    178 kb
+ init: begin setup matrix, pivot=     0 cpu clock=  7.20E-02
+       establish matrix -- done,  cpu clock=  7.50E-02 memory=    181 kb
+       re-order matrix -- done,  cpu clock=  7.70E-02 memory=    181 kb
+ init: end setup matrix,  cpu clock=  7.80E-02 memory=    192 kb
+ dcop: begin dcop,  cpu clock=  8.00E-02
+ dcop: end dcop,  cpu clock=  8.30E-02 memory=    192 kb  tot_iter=       4
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)
