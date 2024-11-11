@@ -111,7 +111,7 @@ Vd  d   gnd PWL(0ns 	0v 		5ns 	0v	5.1ns 	1.8v 	15ns 	1.8v	15.1ns 	0v 	 	25ns 	0v
 ![image](https://github.com/user-attachments/assets/9cb29c69-1581-481b-8d1e-44d97c174fbf)
 
 ## 2 Two Input Decoder
-Here we attempt to design a two input decoder using footed and unfooted dynamic gates (referencing figures 9.22 ~ 9.25 from the textbook)  
+Here we attempt to design a two input decoder using footed and unfooted dynamic gates (referencing figures 9.22 ~ 9.25 from the textbook). By comparing the following results, we can conclude that the 3-stage decoder designs have better performance.   
 ![image](https://github.com/user-attachments/assets/007267bd-58b4-4edf-8e12-3a328f2cfe7f) <br>
 ![image](https://github.com/user-attachments/assets/681b3fd3-d957-477a-81e7-1fcb8c1c84b6)
 ![image](https://github.com/user-attachments/assets/e53d9505-eba6-4a40-ab03-5e0d72c3ee56)
@@ -122,13 +122,15 @@ Here we attempt to design a two input decoder using footed and unfooted dynamic 
 ![image](https://github.com/user-attachments/assets/d01b0624-2441-4085-b195-d01788272744)
 
 #### Footed Domino NOR Gate
-![image](https://github.com/user-attachments/assets/0f610496-7ec2-4040-b9c1-cd70b57e2f3a)
+![image](https://github.com/user-attachments/assets/d084c593-e131-458d-b15f-1b010701b48c)
+
 
 #### Unfooted Domino AND Gate
 ![image](https://github.com/user-attachments/assets/9ea48992-597c-416e-96aa-4da155450c5d)
 
 #### Unfooted Domino NOR Gate
-![image](https://github.com/user-attachments/assets/028d42b4-1254-4a4c-a284-45b7e293719a)
+![image](https://github.com/user-attachments/assets/0639873e-c674-42d5-acf6-567f7860ec44)
+
 
 ### Decoder Structure Design
 Both the 2-stage and 3-stage designs are tested.
@@ -220,6 +222,81 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 
 
 ### 2-2 3-stage Unfooted Domino NOR Decoder 4x4x4=64
+```
+* HW4_3_2_3.sp 
+* 3 stage Unfooted Domino NOR Decoder 4x4x4=64
+*----------------------------------------------------------------------
+* Assumption
+* lib = cic018.l/tt/N_18 & P_18
+* 1. temp 27
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
+
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+
+* FIGURE 1.11 inverter
+.subckt inv in out vdd gnd
+MP1 out in vdd vdd p_18 W=250n L=270n M=2
+MN1 out in gnd gnd N_18 W=250n L=900n M=1
+.ends inv
+
+
+* FIGURE 9.28(a) 3 Stage Unfooted Domino NOR
+.subckt UDNOR a b x ck vdd gnd
+* ------------------------------------------------
+* Unfooted Dynamic NOR x1
+MP1 w ck vdd vdd p_18 W=250n L=270n M=1
+MN1 w a  gnd gnd N_18 W=250n L=900n M=1
+MN2 w b  gnd gnd N_18 W=250n L=900n M=1
+* ------------------------------------------------
+* Static inverter x4
+XINV1 w w1 vdd gnd inv M=4
+* ------------------------------------------------
+* Static inverter x16
+XINV2 w1 x vdd gnd inv M=16
+* ------------------------------------------------
+.ends UDNOR
+
+
+* HW4 Fig3 2 Input Decoder
+.subckt DECODER2 a e ck a_e a_eb ab_e ab_eb vdd gnd
+XINV1 a ab vdd gnd	inv
+XINV2 e eb vdd gnd	inv
+* decoder
+X1OR ab eb a_e   ck vdd gnd UDNOR
+X2OR ab e  a_eb  ck vdd gnd UDNOR
+X3OR a  eb ab_e  ck vdd gnd UDNOR
+X4OR a  e  ab_eb ck vdd gnd UDNOR
+.ends DECODER2
+
+
+Vdd vdd gnd 1.8
+Vck clk gnd PULSE(0v 1.8v 20ns 0.1ns 0.1ns 19.9ns 40ns)
+Va	a 	gnd PULSE(0v 1.8v 5ns  0.1ns 0.1ns 39.9ns 80ns)		* input can be changed @ precharge cycle
+Ve	e 	gnd	PULSE(0v 1.8v 5ns  0.1ns 0.1ns 79.9ns 160ns)	* input can be changed @ precharge cycle
+
+Xdec2 a e clk a_e a_eb ab_e ab_eb vdd gnd DECODER2
+
+Xload1 a_e   n1 vdd gnd	inv M=64
+Xload2 a_eb  n2 vdd gnd	inv M=64
+Xload3 ab_e  n3 vdd gnd	inv M=64
+Xload4 ab_eb n4 vdd gnd	inv M=64
+
+*----------------------------------------------------------------------
+* Stimulus 25Mhz/40ns
+*----------------------------------------------------------------------
+.option post
+.tran 1ps 200ns
+.MEAS TRAN Trise    TRIG V(a_e) val=0.18 TD=20n RISE=1   TARG V(a_e) val=1.62 RISE=1
+.MEAS TRAN Tfall    TRIG V(a_e) val=1.62 TD=20n FALL=1   TARG V(a_e) val=0.18 FALL=1
+.print tran v(a) v(e) v(clk) v(a_e) v(a_eb) v(ab_e) v(ab_eb)
+.end
+```
+![HW4_3_2_3_staticINV_mark](https://github.com/user-attachments/assets/f5dc0514-19f6-4db0-a4ac-907bb1b4293f)
+
 
 
 ### 2-3 2-stage Footed Domino AND Decoder 8x8=64
@@ -310,5 +387,78 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 
 ### 2-4 3-stage Footed Domino NOR Decoder 4x4x4=64
 ```
+* HW4_3_3_3.sp 
+* 3 stage Footed Domino NOR Decoder 4x4x4=64
+*----------------------------------------------------------------------
+* Assumption
+* lib = cic018.l/tt/N_18 & P_18
+* 1. temp 27
+*----------------------------------------------------------------------
+.lib 'cic018.l'  tt
+.temp 27
 
+*----------------------------------------------------------------------
+* Simulation netlist
+*----------------------------------------------------------------------
+
+* FIGURE 1.11 inverter
+.subckt inv in out vdd gnd
+MP1 out in vdd vdd p_18 W=250n L=270n M=2
+MN1 out in gnd gnd N_18 W=250n L=900n M=1
+.ends inv
+
+
+* FIGURE 9.28(a) 3 Stage Footed Domino NOR
+.subckt FDNOR a b x ck vdd gnd
+* ------------------------------------------------
+* Footed Dynamic NOR x1
+MP1 w ck vdd vdd p_18 W=250n L=270n M=1
+MN1 w a  n   gnd N_18 W=250n L=900n M=2
+MN2 w b  n   gnd N_18 W=250n L=900n M=2
+MN3 n ck gnd gnd N_18 W=250n L=900n M=2
+* ------------------------------------------------
+* Static inverter x4
+XINV1 w w1 vdd gnd inv M=4
+* ------------------------------------------------
+* Static inverter x16
+XINV2 x w vdd gnd inv M=16
+* ------------------------------------------------
+.ends FDNOR
+
+
+* HW4 Fig3 2 Input Decoder
+.subckt DECODER2 a e ck a_e a_eb ab_e ab_eb vdd gnd
+XINV1 a ab vdd gnd	inv
+XINV2 e eb vdd gnd	inv
+* decoder
+X1OR ab eb a_e   ck vdd gnd FDNOR
+X2OR ab e  a_eb  ck vdd gnd FDNOR
+X3OR a  eb ab_e  ck vdd gnd FDNOR
+X4OR a  e  ab_eb ck vdd gnd FDNOR
+.ends DECODER2
+
+
+Vdd vdd gnd 1.8
+Vck clk gnd PULSE(0v 1.8v 20ns 0.1ns 0.1ns 19.9ns 40ns)
+Va	a 	gnd PULSE(0v 1.8v 5ns  0.1ns 0.1ns 39.9ns 80ns)		* input can be changed @ precharge cycle
+Ve	e 	gnd	PULSE(0v 1.8v 5ns  0.1ns 0.1ns 79.9ns 160ns)	* input can be changed @ precharge cycle
+
+Xdec2 a e clk a_e a_eb ab_e ab_eb vdd gnd DECODER2
+
+Xload1 a_e   n1 vdd gnd	inv M=64
+Xload2 a_eb  n2 vdd gnd	inv M=64
+Xload3 ab_e  n3 vdd gnd	inv M=64
+Xload4 ab_eb n4 vdd gnd	inv M=64
+
+*----------------------------------------------------------------------
+* Stimulus 25Mhz/40ns
+*----------------------------------------------------------------------
+.option post
+.tran 1ps 200ns
+.MEAS TRAN Trise    TRIG V(a_e) val=0.18 TD=20n RISE=1   TARG V(a_e) val=1.62 RISE=1
+.MEAS TRAN Tfall    TRIG V(a_e) val=1.62 TD=20n FALL=1   TARG V(a_e) val=0.18 FALL=1
+.print tran v(a) v(e) v(clk) v(a_e) v(a_eb) v(ab_e) v(ab_eb)
+.end
 ```
+![HW4_3_3_3_staticINV_mark](https://github.com/user-attachments/assets/c9c43a70-2be9-4c68-965a-133406461cc4)
+
