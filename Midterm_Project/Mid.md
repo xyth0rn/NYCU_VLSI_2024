@@ -42,7 +42,13 @@ xinv3	clk clkb vdd gnd 		inv
 X1 d q clk vdd gnd	dlatch
 Vdd vdd gnd 1.8
 Vck clk gnd PULSE(0v 1.8v 10ns 0.1ns 0.1ns 19.9ns 40ns)
-Vd  d   gnd PWL(0ns 		1.8v 	40ns 	1.8v	40.1ns 	1.8v 	80ns 	1.8v	80.1ns 	0v 	 	120ns 	0v		120.1ns 	1.8v 	160ns 	1.8v	160.1ns 	0v 	 	200ns 	0v		200.1ns 	0v 	 	240ns 	0v		240.1ns 	1.8v 	280ns 	1.8v	280.1ns 	0v 	 	320ns 	0v		320.1ns 	1.8v 	360ns 	1.8v	360.1ns 	1.8v 	400ns 	1.8v	400.1ns 	1.8v 	440ns 	1.8v	440.1ns 	0v 	 	480ns 	0v		480.1ns 	0v 	 	520ns 	0v		520.1ns 	1.8v 	560ns 	1.8v	560.1ns 	0v 	 	600ns 	0v		600.1ns 	0v		640ns 	0v)
+Vd  d   gnd PWL(0ns 		1.8v 	40ns 	1.8v	40.1ns 	1.8v 	80ns 	1.8v
+80.1ns 	0v 	 	120ns 	0v		120.1ns 	1.8v 	160ns 	1.8v	160.1ns 	0v
+200ns 	0v		200.1ns 	0v 	 	240ns 	0v		240.1ns 	1.8v 	280ns 	1.8v
+280.1ns 	0v 	 	320ns 	0v		320.1ns 	1.8v 	360ns 	1.8v	360.1ns 	1.8v
+400ns 	1.8v	400.1ns 	1.8v 	440ns 	1.8v	440.1ns 	0v 	 	480ns 	0v
+480.1ns 	0v 	 	520ns 	0v		520.1ns 	1.8v 	560ns 	1.8v	560.1ns 	0v
+600ns 	0v		600.1ns 	0v		640ns 	0v)
 
 
 *----------------------------------------------------------------------
@@ -97,7 +103,10 @@ xinv3	clk clkb vdd gnd 		inv
 X1 d q clk vdd gnd	dlatch
 Vdd vdd gnd 1.8
 Vck clk gnd PULSE(0v 1.8v 20ns 0.1ns 0.1ns 19.9ns 40ns)
-Vd  d   gnd PWL(0ns 	0v 		5ns 	0v	5.1ns 	1.8v 	15ns 	1.8v	15.1ns 	0v 	 	25ns 	0v		25.1ns 	1.8v 	35ns 	1.8v	35.1ns 	0v 	 	50ns 	0v		50.1ns 	1.8v 	70ns 	1.8v		70.1ns 	0v 		110ns 	0v	110.1ns 1.8v 	130ns 	1.8v		130.1ns 0v 		160ns 	0v)
+Vd  d   gnd PWL(0ns 	0v 		5ns 	0v	5.1ns 	1.8v 	15ns 	1.8v
+15.1ns 	0v 	 	25ns 	0v		25.1ns 	1.8v 	35ns 	1.8v	35.1ns 	0v
+50ns 	0v		50.1ns 	1.8v 	70ns 	1.8v		70.1ns 	0v 	110ns   0v
+110.1ns 1.8v 	130ns 	1.8v		130.1ns 0v 		160ns 	0v)
 
 
 *----------------------------------------------------------------------
