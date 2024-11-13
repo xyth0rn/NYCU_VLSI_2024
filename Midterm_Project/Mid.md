@@ -1,4 +1,6 @@
 # Midterm Project
+NYCU EE 112511210 黃仲璿
+
 ## 1 Register Design Using CMOS Positive Trigger D Latch
 ### 1.1 Register Using Positive Trigger D Latch Testbench Result
 25MHz Input Sequence: 1,1,0,1,0,0,1,0,1,1,1,0,0,1,0 <br>
