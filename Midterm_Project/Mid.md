@@ -114,23 +114,22 @@ Vd  d   gnd PWL(0ns 	0v 		5ns 	0v	5.1ns 	1.8v 	15ns 	1.8v	15.1ns 	0v 	 	25ns 	0v
 
 ## 2 Two Input Decoder
 Here we attempt to design a two input decoder using footed and unfooted dynamic gates (referencing figures 9.22 ~ 9.25 from the textbook). By comparing the following results, we can conclude that the 3-stage decoder designs have better performance.   
-![image](https://github.com/user-attachments/assets/007267bd-58b4-4edf-8e12-3a328f2cfe7f) <br>
+![image](https://github.com/user-attachments/assets/007267bd-58b4-4edf-8e12-3a328f2cfe7f)
 ![image](https://github.com/user-attachments/assets/681b3fd3-d957-477a-81e7-1fcb8c1c84b6)
 ![image](https://github.com/user-attachments/assets/e53d9505-eba6-4a40-ab03-5e0d72c3ee56)
-![image](https://github.com/user-attachments/assets/a72fac25-7124-494b-a153-b862fcf60a5a)
+![image](./logical_effort_calc.jpg)
 
 ### Basic Components
-#### Footed Domino AND Gate (NAND + INV)
+#### Footed Domino AND Gate (Footed NAND + Static INV)
 ![image](https://github.com/user-attachments/assets/d01b0624-2441-4085-b195-d01788272744)
 
-#### Footed Domino NOR Gate (NOR + INV + INV)
+#### Footed Domino NOR Gate (Footed NOR + Static INV + Static INV)
 ![image](https://github.com/user-attachments/assets/d084c593-e131-458d-b15f-1b010701b48c)
 
-
-#### Unfooted Domino AND Gate (NAND + INV)
+#### Unfooted Domino AND Gate (Unfooted NAND + Static INV)
 ![image](https://github.com/user-attachments/assets/9ea48992-597c-416e-96aa-4da155450c5d)
 
-#### Unfooted Domino NOR Gate (NOR + INV + INV)
+#### Unfooted Domino NOR Gate (Unfooted NOR + Static INV + Static INV)
 ![image](https://github.com/user-attachments/assets/0639873e-c674-42d5-acf6-567f7860ec44)
 
 
@@ -139,6 +138,10 @@ Both the 2-stage and 3-stage designs are tested.
 ![image](https://github.com/user-attachments/assets/e77ffb3a-ce03-4ca1-9215-a5d2620ad0bc)
 
 #### 2-1 2-stage Unfooted Domino AND Decoder 8x8=64
+$N=2$ <br>
+$g=g_a\times 1=\frac{1}{2} [\frac{3}{3\times \frac{1}{2} } +\frac{2}{3} ] =\frac{4}{3}$ <br>
+$p=p_a\times 1=\frac{1}{2}[\frac{3}{2}+\frac{3}{3}]=\frac{5}{4}$ <br>
+Gate size: Unfooted NAND = 8, Static INV = 8 <br>
 ```
 * HW4_3_2_2.sp 
 * 2 stage unfooted Domino AND Decoder 8x8=64
@@ -225,6 +228,10 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 
 
 ### 2-2 3-stage Unfooted Domino NOR Decoder 4x4x4=64
+$N=3$ <br>
+$g=g_a\times 1\times 1=\frac{1}{2} [\frac{2}{3\times \frac{1}{2} } +\frac{1}{3} ] =\frac{5}{6}$ <br>
+$p=p_a\times 1\times 1=\frac{1}{2}[\frac{3}{2}+\frac{3}{3}]=\frac{5}{4}$ <br>
+Gate size: Unfooted NOR = 4, Static INV no.1 = 4, Static INV no.2 = 4 <br>
 ```
 * HW4_3_2_3.sp 
 * 3 stage Unfooted Domino NOR Decoder 4x4x4=64
@@ -304,6 +311,10 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 
 
 ### 2-3 2-stage Footed Domino AND Decoder 8x8=64
+$N=2$ <br>
+$g=g_a\times 1=\frac{1}{2} [\frac{4}{3\times \frac{1}{2} } +\frac{3}{3} ] =\frac{11}{6}$ <br>
+$p=p_a\times 1=\frac{1}{2}[\frac{4}{2}+\frac{4}{3}]=\frac{5}{3}$ <br>
+Gate size:, Footed NAND = 8, Static INV = 8 <br>
 ```
 * HW4_3_3_2.sp 
 * 2 stage Footed Domino AND Decoder 8x8=64
@@ -391,6 +402,10 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 
 
 ### 2-4 3-stage Footed Domino NOR Decoder 4x4x4=64
+$N=3$ <br>
+$g=g_a\times 1\times 1=\frac{1}{2} [\frac{3}{3\times \frac{1}{2} } +\frac{2}{3} ] =\frac{4}{3}$ <br>
+$p=p_a\times 1\times 1=\frac{1}{2}[\frac{5}{2}+\frac{5}{3}]=\frac{25}{12}$ <br>
+Gate size:, Footed NOR = 4, Static INV no.1 = 4, Static INV no.2 = 4 <br>
 ```
 * HW4_3_3_3.sp 
 * 3 stage Footed Domino NOR Decoder 4x4x4=64
