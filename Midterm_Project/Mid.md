@@ -120,17 +120,17 @@ Here we attempt to design a two input decoder using footed and unfooted dynamic 
 ![image](https://github.com/user-attachments/assets/a72fac25-7124-494b-a153-b862fcf60a5a)
 
 ### Basic Components
-#### Footed Domino AND Gate
+#### Footed Domino AND Gate (NAND + INV)
 ![image](https://github.com/user-attachments/assets/d01b0624-2441-4085-b195-d01788272744)
 
-#### Footed Domino NOR Gate
+#### Footed Domino NOR Gate (NOR + INV + INV)
 ![image](https://github.com/user-attachments/assets/d084c593-e131-458d-b15f-1b010701b48c)
 
 
-#### Unfooted Domino AND Gate
+#### Unfooted Domino AND Gate (NAND + INV)
 ![image](https://github.com/user-attachments/assets/9ea48992-597c-416e-96aa-4da155450c5d)
 
-#### Unfooted Domino NOR Gate
+#### Unfooted Domino NOR Gate (NOR + INV + INV)
 ![image](https://github.com/user-attachments/assets/0639873e-c674-42d5-acf6-567f7860ec44)
 
 
