@@ -65,7 +65,7 @@ Vd  d   gnd PWL(0ns 		1.8v 	40ns 	1.8v	40.1ns 	1.8v 	80ns 	1.8v
 ![image](https://github.com/user-attachments/assets/63a71403-c520-4cd4-b7cb-823e3babecee)
 
 ## 1.2 Additional Testbench: Non-synchronized Input and Clock Signal
-Here we test a case where the input signal is not in sync with the clock signal to verify the latch function.  
+The test signal provided in the assignment synced with the clock signal, thus were unable to show the "latch" function of the design. Therefore here we test an additional case where the input signal is *not* in sync with the clock signal to verify the latch function.  
 ```
 * HW4_3_1_2.sp
 *----------------------------------------------------------------------
@@ -131,6 +131,7 @@ Here we attempt to design a two input decoder using footed and unfooted dynamic 
 ![image](./logical_effort_calc.jpg)
 
 ### Basic Components
+First, we start by designing the basic dynamic gates that would be used in the circuits. Note that dynamic inverters are not used in the designs as static inverters are required to convert (or connect) dynamic circuit back to static logic.
 #### Footed Domino AND Gate (Footed NAND + Static INV)
 ![image](https://github.com/user-attachments/assets/d01b0624-2441-4085-b195-d01788272744)
 
@@ -493,4 +494,6 @@ Xload4 ab_eb n4 vdd gnd	inv M=64
 ```
 ![HW4_3_3_3_staticINV_mark](https://github.com/user-attachments/assets/90a5f0a3-ff1b-4842-be26-544199b10cdb)
 
-
+## 3 Discussion and Conclusion
+By comparing the timing diagram of the 2-staged design and the 3-staged design, we can verify that despite producing a similar output result, the both 3-stage designs have better delay performance than the 2-stage designs. This result matches with the delay estimation method introduced in the VLSI course. The simulation result also verified that the footed designs have larger delays compared to their unfooted counterparts. <br>
+This midterm project provided an easy-to-understand view on how different CMOS circuit designs affect delay performance instead of the unimaginable math-filled derivations in the textbook. Admittedly, the chapter on dynamic CMOS circuits a chapter that I did not fully understand at first, this simulation project gave me a better image of how the use of dynamic CMOS circuit can affect delay performance. However, even though I am now able to grasp the idea of how circuit design ca affect delay, the delay difference yielded in this simulation project is so small that I still cannot really understand how this can be a significant in real life scenarios. I suppose I might be able to understand such in the future if I were able to get in touch with more realistic function designs of CMOS circuits.
